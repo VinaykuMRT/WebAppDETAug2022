@@ -51,5 +51,21 @@ namespace WebAppDETAug2022MCV.Controllers
             PizzaServices.PizzaServices.Delete(p.Id);
             return RedirectToAction("List");
         }
+        public IActionResult Edit()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int ID, string Name, PizzaSize Size, bool IsGlutenFree, decimal Price)
+        {
+            // Pizza p = Pizza.Wher(p => p.Id == Pizza.ID);
+            // if (index == -1)
+            //    return RedirectToAction("List");
+            Pizza p = new Pizza { Id = ID, Name = Name, Size = Size, Price = Price, IsGlutenFree = IsGlutenFree };
+            PizzaServices.PizzaServices.Update(p);
+            return RedirectToAction("List");
+
+        }
     }
 }

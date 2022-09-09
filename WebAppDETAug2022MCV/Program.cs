@@ -1,4 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using WebAppDETAug2022MCV.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<WebAppDETAug2022MCVContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("WebAppDETAug2022MCVContext") ?? throw new InvalidOperationException("Connection string 'WebAppDETAug2022MCVContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -24,7 +29,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Pizza}/{action=Index}/{id?}");
+    pattern: "{controller=Friend}/{action=List}/{id?}");
 
 //app.MapControllerRoute(
 //    name: "default",
