@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using WebAppDETAug2022MCV.Filters;
 using WebAppDETAug2022MCV.Models;
 
 namespace WebAppDETAug2022MCV.Controllers
@@ -21,6 +22,7 @@ namespace WebAppDETAug2022MCV.Controllers
             return View();
 
         }
+        [MyLog]
         public IActionResult Index()
         {
             return View();

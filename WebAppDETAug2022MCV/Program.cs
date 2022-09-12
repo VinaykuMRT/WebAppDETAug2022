@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using WebAppDETAug2022MCV.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<PizzaContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("PizzaContext") ?? throw new InvalidOperationException("Connection string 'PizzaContext' not found.")));
 builder.Services.AddDbContext<WebAppDETAug2022MCVContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("WebAppDETAug2022MCVContext") ?? throw new InvalidOperationException("Connection string 'WebAppDETAug2022MCVContext' not found.")));
 
@@ -29,7 +31,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Friend}/{action=List}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 //app.MapControllerRoute(
 //    name: "default",

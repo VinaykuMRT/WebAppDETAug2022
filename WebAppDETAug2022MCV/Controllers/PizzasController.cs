@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq; 
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,9 +12,9 @@ namespace WebAppDETAug2022MCV.Controllers
 {
     public class PizzasController : Controller
     {
-        private readonly WebAppDETAug2022MCVContext _context;
+        private readonly PizzaContext _context;
 
-        public PizzasController(WebAppDETAug2022MCVContext context)
+        public PizzasController(PizzaContext context)
         {
             _context = context;
         }
@@ -24,7 +24,7 @@ namespace WebAppDETAug2022MCV.Controllers
         {
               return _context.Pizza != null ? 
                           View(await _context.Pizza.ToListAsync()) :
-                          Problem("Entity set 'WebAppDETAug2022MCVContext.Pizza'  is null.");
+                          Problem("Entity set 'PizzaContext.Pizza'  is null.");
         }
 
         // GET: Pizzas/Details/5
@@ -143,7 +143,7 @@ namespace WebAppDETAug2022MCV.Controllers
         {
             if (_context.Pizza == null)
             {
-                return Problem("Entity set 'WebAppDETAug2022MCVContext.Pizza'  is null.");
+                return Problem("Entity set 'PizzaContext.Pizza'  is null.");
             }
             var pizza = await _context.Pizza.FindAsync(id);
             if (pizza != null)
