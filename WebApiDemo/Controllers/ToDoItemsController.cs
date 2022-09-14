@@ -22,6 +22,7 @@ namespace WebApiDemo.Controllers
         }
 
         // GET: api/ToDoItems
+        [EnableQuery()]  // requires using Microsoft.AspNet.OData;
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ToDoItems>>> GetToDoItems()
         {
